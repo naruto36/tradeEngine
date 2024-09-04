@@ -1,0 +1,7 @@
+com\example2\service\TradeEventService.class
+com\example2\controller\TradeEventController.class
+com\example2\util\XMLParserUtil.class
+com\example2\repository\TradeEventRepository.class
+com\example2\App.class
+com\example2\entity\TradeEvent.class
+com\example2\TradeReportingEngineApplication.class

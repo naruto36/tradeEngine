@@ -1,14 +1,15 @@
 package com.example2.service;
 
-import com.example.entity.TradeEvent;
-import com.example.repository.TradeEventRepository;
-import com.example.util.XMLParserUtil;
+import com.example2.entity.TradeEvent;
+import com.example2.repository.TradeEventRepository;
+import com.example2.util.XMLParserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.io.File;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,10 +18,10 @@ public class TradeEventService {
     @Autowired
     private TradeEventRepository repository;
 
-    @PostConstruct
+    @Bean
     public void processXMLFiles() throws Exception {
         File xmlDir = new File("src/main/resources/xml");
-        for (File xmlFile : xmlDir.listFiles()) {
+        for (File xmlFile : Objects.requireNonNull(xmlDir.listFiles())) {
             TradeEvent event = XMLParserUtil.parseXML(xmlFile);
             repository.save(event);
         }
